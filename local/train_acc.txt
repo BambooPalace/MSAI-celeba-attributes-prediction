@@ -1,0 +1,52 @@
+model settings:
+ Namespace(batch_size=64, epoches=10, lr=0.01, model='resnet18', pretrained=True, resume=False, root='/Users/clairegong/Downloads/ACV Project/', train_conv=True)
+epoch 1 / 10
+time elapsed:135 s 
+running loss: 0.654650149345398 training accuracy: 61.474999999999994
+validation loss: 0.48803857088088987 validation accuracy: 79.75
+epoch 2 / 10
+time elapsed:268 s 
+running loss: 0.4469474891821543 training accuracy: 80.44583333333334
+validation loss: 0.435392290353775 validation accuracy: 80.8125
+epoch 3 / 10
+time elapsed:395 s 
+running loss: 0.43025373180707294 training accuracy: 81.48333333333333
+validation loss: 0.42564178705215455 validation accuracy: 81.7125
+epoch 4 / 10
+time elapsed:585 s 
+running loss: 0.4146004625161489 training accuracy: 82.53333333333333
+validation loss: 0.4097673487663269 validation accuracy: 82.475
+epoch 5 / 10
+time elapsed:739 s 
+running loss: 0.3960204819838206 training accuracy: 83.275
+validation loss: 0.3977185249328613 validation accuracy: 83.02499999999999
+epoch 6 / 10
+time elapsed:879 s 
+running loss: 0.3815516086419423 training accuracy: 83.85416666666666
+validation loss: 0.3895384955406189 validation accuracy: 83.50000000000001
+epoch 7 / 10
+time elapsed:1016 s 
+running loss: 0.3746015727519989 training accuracy: 84.20833333333333
+validation loss: 0.383770717382431 validation accuracy: 83.725
+epoch 8 / 10
+time elapsed:1146 s 
+running loss: 0.368403643767039 training accuracy: 84.36666666666667
+validation loss: 0.3792897164821625 validation accuracy: 83.9375
+epoch 9 / 10
+time elapsed:1277 s 
+running loss: 0.3626815660794576 training accuracy: 84.70416666666667
+validation loss: 0.37535821318626406 validation accuracy: 84.0375
+epoch 10 / 10
+time elapsed:1399 s 
+running loss: 0.3559046228726705 training accuracy: 84.95833333333334
+validation loss: 0.37107667565345764 validation accuracy: 84.32500000000002
+best accuracy 84.32500000000002
+Traceback (most recent call last):
+  File "main_local.py", line 227, in <module>
+    main()
+  File "main_local.py", line 68, in main
+    test_model(model, test_loader)
+  File "main_local.py", line 210, in test_model
+    x,y = x.to(device), y.to(device)
+NameError: name 'device' is not defined
+(base) ClairedeMacBook-Pro:ACV Project clairegong$ 

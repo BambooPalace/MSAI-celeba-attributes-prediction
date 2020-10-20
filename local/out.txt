@@ -1,0 +1,55 @@
+model settings:
+ Namespace(batch_size=64, epoches=10, lr=0.01, model='resnet18', pretrained=True, resume=True, root='/Users/clairegong/Downloads/ACV Project/', test_mode=False, test_unlabelled=False, train_conv=True)
+epoch 1 / 10
+time elapsed:94 s 
+running loss: 0.0330205894758304 training accuracy: 87.97083333333335
+validation loss: 0.04367072969675064 validation accuracy: 86.35
+epoch 2 / 10
+time elapsed:187 s 
+running loss: 0.031212956880529722 training accuracy: 88.02916666666665
+validation loss: 0.041567764580249786 validation accuracy: 86.1875
+epoch 3 / 10
+time elapsed:290 s 
+running loss: 0.029311558082699776 training accuracy: 88.02083333333334
+validation loss: 0.040468276739120485 validation accuracy: 86.025
+epoch 4 / 10
+time elapsed:392 s 
+running loss: 0.028815826525290807 training accuracy: 87.88333333333334
+validation loss: 0.03960929244756699 validation accuracy: 86.06249999999999
+epoch 5 / 10
+time elapsed:501 s 
+running loss: 0.028752744495868683 training accuracy: 87.87916666666666
+validation loss: 0.03860045626759529 validation accuracy: 85.91250000000001
+epoch 6 / 10
+time elapsed:620 s 
+running loss: 0.02796960763633251 training accuracy: 87.97500000000001
+validation loss: 0.038082781583070754 validation accuracy: 85.95
+epoch 7 / 10
+time elapsed:739 s 
+running loss: 0.027725620220104854 training accuracy: 87.71249999999999
+validation loss: 0.03798539206385612 validation accuracy: 85.825
+epoch 8 / 10
+time elapsed:881 s 
+running loss: 0.02760917420188586 training accuracy: 87.73750000000001
+validation loss: 0.037835229635238644 validation accuracy: 85.825
+epoch 9 / 10
+time elapsed:1015 s 
+running loss: 0.027289513647556305 training accuracy: 88.05416666666667
+validation loss: 0.03764811784029007 validation accuracy: 85.825
+epoch 10 / 10
+time elapsed:1149 s 
+running loss: 0.026943667953213055 training accuracy: 88.14583333333333
+validation loss: 0.037313649952411654 validation accuracy: 86.0
+best accuracy 86.35
+time elapsed:11 s 
+test loss:	 0.03984657689929008 test accuracy:	 87.025
+accuracy per attribute
+ tensor([0.8800, 0.8350, 0.7250, 0.8350, 0.9650, 0.8550, 0.8250, 0.8150, 0.8400,
+        0.8950, 0.9350, 0.8400, 0.8900, 0.9600, 0.9500, 0.9400, 0.9600, 0.9250,
+        0.8700, 0.7200, 0.9150, 0.7850, 0.9600, 0.8750, 0.8800, 0.7350, 0.9650,
+        0.7450, 0.8950, 0.9350, 0.9550, 0.7850, 0.7850, 0.8100, 0.8050, 0.9700,
+        0.8650, 0.8900, 0.9250, 0.8700])
+Among test accuracies for 40 attributes, min accuray is 0.72 for attribute 20 and max accuracy is 0.97 for attribute 36
+tensor([20,  3, 26, 28, 22, 32, 33, 35, 34,  8,  7,  2,  4,  9, 12,  6, 37, 19,
+        40, 24,  1, 25, 38, 13, 10, 29, 21, 18, 39, 11, 30, 16, 15, 31, 14, 23,
+        17, 27,  5, 36])
