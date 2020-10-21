@@ -204,11 +204,11 @@ def test_unlabelled():
     torch.save(labels,'labels.pt')
     np.savetxt("predictions.txt", labels, fmt='%d', footer='\n', comments='')
 
-    img_names = os.listdir(args.root+'test_data/13234_imgs/')
+    img_names = os.listdir(args.root+'test_data/13233_imgs/')
     file = "predictions.txt"
 
     with open(file, 'r') as f:
-        lines = [' '.join([img, x.strip(), '\n']) for x, img in zip(f.readlines(), img_names)]
+        lines = [' '.join([img, x.strip()+'\n']) for x, img in zip(f.readlines(), img_names)]
 
     with open(file, 'w') as f:
         f.writelines(lines)
