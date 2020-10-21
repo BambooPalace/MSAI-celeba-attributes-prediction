@@ -30,7 +30,7 @@ The model is based on pretrained Resnet18 + 1fc layer.
 ├── main.py
 ├── normalize.py     #compute train datasets mean and std
 ├── test_data
-│   └── image_folder        #unlabelled test data
+│   └── 13233_imgs        #unlabelled test data
 └── utils.py 
 ```
 
