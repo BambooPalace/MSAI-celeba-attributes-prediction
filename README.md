@@ -15,23 +15,23 @@ The model is based on pretrained Resnet18 + 1fc layer.
 
 ## Files
 ```
-- ├── My\ acv\ project.ipynb (#illustration file for code preparation)
-- ├── README.md
-- ├── annotations
-- │   ├── test_attr_list.txt
-- │   ├── train_attr_list.txt
-- │   └── val_attr_list.txt
-- ├── celeba.py (#CelebA dataset class)
-- ├── checkpoints
-- │   └── checkpoint_best.pth
-- ├── img_align_celeba #cropped and aligned jpg dataset
-- ├── log.txt #accuracy log for 20epoches, the lr displayed is the initial setting
-- ├── loss.py #focal loss
-- ├── main.py
-- ├── normalize.py #compute train datasets mean and std
-- ├── test_data
-- │   └── image_folder #unlabelled test data
-- └── utils.py 
+├── My\ acv\ project.ipynb  #illustration file for code preparation
+├── README.md
+├── annotations
+│   ├── test_attr_list.txt
+│   ├── train_attr_list.txt
+│   └── val_attr_list.txt
+├── celeba.py        #CelebA dataset class
+├── checkpoints
+│   └── checkpoint_best.pth
+├── img_align_celeba        #cropped and aligned jpg dataset
+├── log.txt          #accuracy log for 20epoches, the lr displayed is the initial setting
+├── loss.py          #focal loss
+├── main.py
+├── normalize.py     #compute train datasets mean and std
+├── test_data
+│   └── image_folder        #unlabelled test data
+└── utils.py 
 ```
 
 ## Running the codes
@@ -63,7 +63,7 @@ The test accuracies for 40 attributes is as below:
         0.9385, 0.8739, 0.9682, 0.8886]
 
 Among test accuracies for 40 attributes, the minimum accuracy is 71.5% for attribute 7 and the maximum accuracy is 99.6% for attribute 16.
-Details can refer to this [log](https://github.com/BambooPalace/Celeba-attributes-prediction/blob/main/log.txt)
+Details can refer to [log.txt](https://github.com/BambooPalace/Celeba-attributes-prediction/blob/main/log.txt)
 
 ## Readings
 -  Z. Liu et al. Deep Learning Face Attributes in the Wild, ICCV 2015
