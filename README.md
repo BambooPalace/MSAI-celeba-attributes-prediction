@@ -13,96 +13,64 @@ Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-I
 
 Since the purpose of these experiments are to illustrate the effectiveness of the federated learning paradigm, only simple models such as MLP and CNN are used.
 
-## Requirments
-Install all the packages from requirments.txt
-* Python3
+## Requirements
+* Anaconda3
 * Pytorch
 * Torchvision
 
 ## Data
-* Download train and test datasets manually or they will be automatically downloaded from torchvision datasets.
-* Experiments are run on Mnist, Fashion Mnist and Cifar.
-* To use your own dataset: Move your dataset to data directory and write a wrapper on pytorch dataset class.
+* Data source: [Large-scale CelebFaces Attributes (CelebA) Dataset] (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+* Training, validation and test data in .jpg format is downloaded from [here](https://drive.google.com/drive/folders/0B7EVK8r0v71peklHb0pGdDl6R28?usp=sharing) into `img_align_celeba` folder for the training, the dataloader in `utils.py` will load the datasets according to the `annotations` files. 
+* Private unlabelled dataset is downloaded from [here](https://drive.google.com/file/d/1VF7BkaII4eBZe98v9UNUj_1a2iWGU1kZ/view?usp=drivesdk) into 'test_data/imgae_folder' for labelling.
 
-## Running the experiments
-The baseline experiment trains the model in the conventional way.
+## Files
+├── My\ acv\ project.ipynb #illustration file for code preparation
+├── README.md
+├── annotations
+│   ├── test_attr_list.txt
+│   ├── train_attr_list.txt
+│   └── val_attr_list.txt
+├── celeba.py #CelebA dataset class
+├── checkpoints
+│   └── checkpoint_best.pth
+├── img_align_celeba #cropped and aligned jpg dataset
+├── log.txt #accuracy log for 20epoches, the lr displayed is the initial setting
+├── loss.py #focal loss
+├── main.py
+├── normalize.py #compute train datasets mean and std
+├── test_data
+│   └── image_folder #unlabelled test data
+└── utils.py
 
-* To run the baseline experiment with MNIST on MLP using CPU:
+## Running the codes
+* Restart model training for 20 epoches:
 ```
-python src/baseline_main.py --model=mlp --dataset=mnist --epochs=10
+python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth' 
 ```
-* Or to run it on GPU (eg: if gpu:0 is available):
+* Resume model training for another 20 epoches:
 ```
-python src/baseline_main.py --model=mlp --dataset=mnist --gpu=0 --epochs=10
+python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth'  --resume
 ```
------
-
-Federated experiment involves training a global model using many local models.
-
-* To run the federated experiment with CIFAR on CNN (IID):
+* Retrieve test accuracy of lastest trained model:
 ```
-python src/federated_main.py --model=cnn --dataset=cifar --gpu=0 --iid=1 --epochs=10
+python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-mode
 ```
-* To run the same experiment under non-IID condition:
+* Make predictions for the unlabelled data into `predictions.txt`:
 ```
-python src/federated_main.py --model=cnn --dataset=cifar --gpu=0 --iid=0 --epochs=10
+python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-unlabelled
 ```
 
-You can change the default values of other parameters to simulate different conditions. Refer to the options section.
+## Results
+After running the model with the selected hyperparameters on the total dataset for 20 epochs, the resulting average validation accuracy is 91.8% and average test accuracy is 91.4%. 
 
-## Options
-The default values for various paramters parsed to the experiment are given in ```options.py```. Details are given some of those parameters:
-
-* ```--dataset:```  Default: 'mnist'. Options: 'mnist', 'fmnist', 'cifar'
-* ```--model:```    Default: 'mlp'. Options: 'mlp', 'cnn'
-* ```--gpu:```      Default: None (runs on CPU). Can also be set to the specific gpu id.
-* ```--epochs:```   Number of rounds of training.
-* ```--lr:```       Learning rate set to 0.01 by default.
-* ```--verbose:```  Detailed log outputs. Activated by default, set to 0 to deactivate.
-* ```--seed:```     Random Seed. Default set to 1.
-
-#### Federated Parameters
-* ```--iid:```      Distribution of data amongst users. Default set to IID. Set to 0 for non-IID.
-* ```--num_users:```Number of users. Default is 100.
-* ```--frac:```     Fraction of users to be used for federated updates. Default is 0.1.
-* ```--local_ep:``` Number of local training epochs in each user. Default is 10.
-* ```--local_bs:``` Batch size of local updates in each user. Default is 10.
-* ```--unequal:```  Used in non-iid setting. Option to split the data amongst users equally or unequally. Default set to 0 for equal splits. Set to 1 for unequal splits.
-
-## Results on MNIST
-#### Baseline Experiment:
-The experiment involves training a single model in the conventional way.
-
-Parameters: <br />
-* ```Optimizer:```    : SGD 
-* ```Learning Rate:``` 0.01
-
-```Table 1:``` Test accuracy after training for 10 epochs:
-
-| Model | Test Acc |
-| ----- | -----    |
-|  MLP  |  92.71%  |
-|  CNN  |  98.42%  |
-
-----
-
-#### Federated Experiment:
-The experiment involves training a global model in the federated setting.
-
-Federated parameters (default values):
-* ```Fraction of users (C)```: 0.1 
-* ```Local Batch size  (B)```: 10 
-* ```Local Epochs      (E)```: 10 
-* ```Optimizer            ```: SGD 
-* ```Learning Rate        ```: 0.01 <br />
-
-```Table 2:``` Test accuracy after training for 10 global epochs with:
-
-| Model |    IID   | Non-IID (equal)|
-| ----- | -----    |----            |
-|  MLP  |  88.38%  |     73.49%     |
-|  CNN  |  97.28%  |     75.94%     |
-
+The test accuracies for 40 attributes is as below:
+       [0.9482, 0.8340, 0.8293, 0.8538, 0.9893, 0.9600, 0.7152, 0.8398, 0.9002, 
+        0.9596, 0.9632, 0.8904, 0.9260, 0.9589, 0.9639, 0.9962, 0.9744, 0.9833,
+        0.9184, 0.8758, 0.9813, 0.9377, 0.9696, 0.8766, 0.9619, 0.7556, 0.9706,
+        0.7684, 0.9381, 0.9504, 0.9775, 0.9283, 0.8448, 0.8488, 0.9031, 0.9904,
+        0.9385, 0.8739, 0.9682, 0.8886]
+Among test accuracies for 40 attributes, the minimum accuracy is 71.5% for attribute 7 and the maximum accuracy is 99.6% for attribute 16.
+Details can refer to this [log](https://github.com/BambooPalace/Celeba-attributes-prediction/blob/main/log.txt)
 
 ## Readings
 -  Z. Liu et al. Deep Learning Face Attributes in the Wild, ICCV 2015
