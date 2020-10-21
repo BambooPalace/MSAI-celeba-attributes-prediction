@@ -2,6 +2,7 @@ from celeba import CelebA
 import torch
 from torchvision import datasets, models, transforms
 
+#get mean and std after data augmentation
 
 def dataloaders():
     # Data loading code
