@@ -37,19 +37,19 @@ The model is based on pretrained Resnet18 + 1fc layer.
 ## Running the codes
 * Restart model training (pretrained Resnet18 finetuning) for 20 epoches:
 ```
-python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth' 
+python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth' --root='current directory'
 ```
 * Resume model training for another 20 epoches:
 ```
-python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth'  --resume
+python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth'  --resume --root='current directory'
 ```
 * Retrieve test accuracy of lastest trained model:
 ```
-python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-mode
+python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-mode --root='current directory'
 ```
 * Make predictions for the unlabelled data into `predictions.txt`:
 ```
-python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-unlabelled
+python main.py --batch_size=512 --checkpoint='checkpoint_best.pth'  --test-unlabelled --root='current directory'
 ```
 
 ## Results
