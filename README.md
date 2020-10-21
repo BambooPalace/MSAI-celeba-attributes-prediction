@@ -1,5 +1,5 @@
 # Description
-CelebA face attributes prediction using [Large-scale CelebFaces Attributes (CelebA) Dataset] (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
+CelebA face attributes prediction using [Large-scale CelebFaces Attributes (CelebA) Dataset](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 
 The model is based on pretrained Resnet18 + 1fc layer.
 
@@ -14,13 +14,14 @@ The model is based on pretrained Resnet18 + 1fc layer.
 * Data augmentation(random rotation, flip, >0.8 scale crop) is performed
 
 ## Files
-- ├── My\ acv\ project.ipynb #illustration file for code preparation
+```
+- ├── My\ acv\ project.ipynb (#illustration file for code preparation)
 - ├── README.md
 - ├── annotations
 - │   ├── test_attr_list.txt
 - │   ├── train_attr_list.txt
 - │   └── val_attr_list.txt
-- ├── celeba.py #CelebA dataset class
+- ├── celeba.py (#CelebA dataset class)
 - ├── checkpoints
 - │   └── checkpoint_best.pth
 - ├── img_align_celeba #cropped and aligned jpg dataset
@@ -31,6 +32,7 @@ The model is based on pretrained Resnet18 + 1fc layer.
 - ├── test_data
 - │   └── image_folder #unlabelled test data
 - └── utils.py 
+```
 
 ## Running the codes
 * Restart model training (pretrained Resnet18 finetuning) for 20 epoches:
