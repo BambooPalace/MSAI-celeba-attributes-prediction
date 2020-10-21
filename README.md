@@ -1,17 +1,7 @@
-- Description of the files you have submitted.
-- References to the third party libraries you are using in your solution (leave
-blank if you are not using any of them).
-- Any details you want the person who tests your solution to know when
-he/she tests your solution, e.g which script to run.
-
 # Description
+CelebA face attributes prediction using [Large-scale CelebFaces Attributes (CelebA) Dataset] (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 
-Implementation of the vanilla federated learning paper : [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629).
-
-
-Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-IID). In case of non-IID, the data amongst the users can be split equally or unequally.
-
-Since the purpose of these experiments are to illustrate the effectiveness of the federated learning paradigm, only simple models such as MLP and CNN are used.
+The model is based on pretrained Resnet18 + 1fc layer.
 
 ## Requirements
 * Anaconda3
@@ -19,31 +9,31 @@ Since the purpose of these experiments are to illustrate the effectiveness of th
 * Torchvision
 
 ## Data
-* Data source: [Large-scale CelebFaces Attributes (CelebA) Dataset] (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 * Training, validation and test data in .jpg format is downloaded from [here](https://drive.google.com/drive/folders/0B7EVK8r0v71peklHb0pGdDl6R28?usp=sharing) into `img_align_celeba` folder for the training, the dataloader in `utils.py` will load the datasets according to the `annotations` files. 
 * Private unlabelled dataset is downloaded from [here](https://drive.google.com/file/d/1VF7BkaII4eBZe98v9UNUj_1a2iWGU1kZ/view?usp=drivesdk) into 'test_data/imgae_folder' for labelling.
+* Data augmentation(random rotation, flip, >0.8 scale crop) is performed
 
 ## Files
-├── My\ acv\ project.ipynb #illustration file for code preparation
-├── README.md
-├── annotations
-│   ├── test_attr_list.txt
-│   ├── train_attr_list.txt
-│   └── val_attr_list.txt
-├── celeba.py #CelebA dataset class
-├── checkpoints
-│   └── checkpoint_best.pth
-├── img_align_celeba #cropped and aligned jpg dataset
-├── log.txt #accuracy log for 20epoches, the lr displayed is the initial setting
-├── loss.py #focal loss
-├── main.py
-├── normalize.py #compute train datasets mean and std
-├── test_data
-│   └── image_folder #unlabelled test data
-└── utils.py
+- ├── My\ acv\ project.ipynb #illustration file for code preparation
+- ├── README.md
+- ├── annotations
+- │   ├── test_attr_list.txt
+- │   ├── train_attr_list.txt
+- │   └── val_attr_list.txt
+- ├── celeba.py #CelebA dataset class
+- ├── checkpoints
+- │   └── checkpoint_best.pth
+- ├── img_align_celeba #cropped and aligned jpg dataset
+- ├── log.txt #accuracy log for 20epoches, the lr displayed is the initial setting
+- ├── loss.py #focal loss
+- ├── main.py
+- ├── normalize.py #compute train datasets mean and std
+- ├── test_data
+- │   └── image_folder #unlabelled test data
+- └── utils.py 
 
 ## Running the codes
-* Restart model training for 20 epoches:
+* Restart model training (pretrained Resnet18 finetuning) for 20 epoches:
 ```
 python main.py --train_conv --batch_size=512 --epoches=20 --lr=0.1 --checkpoint='checkpoint_best.pth' 
 ```
@@ -69,6 +59,7 @@ The test accuracies for 40 attributes is as below:
         0.9184, 0.8758, 0.9813, 0.9377, 0.9696, 0.8766, 0.9619, 0.7556, 0.9706,
         0.7684, 0.9381, 0.9504, 0.9775, 0.9283, 0.8448, 0.8488, 0.9031, 0.9904,
         0.9385, 0.8739, 0.9682, 0.8886]
+
 Among test accuracies for 40 attributes, the minimum accuracy is 71.5% for attribute 7 and the maximum accuracy is 99.6% for attribute 16.
 Details can refer to this [log](https://github.com/BambooPalace/Celeba-attributes-prediction/blob/main/log.txt)
 
