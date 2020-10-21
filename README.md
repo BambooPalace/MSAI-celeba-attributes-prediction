@@ -105,9 +105,9 @@ Federated parameters (default values):
 
 
 ## Readings
-[1] Z. Liu et al. Deep Learning Face Attributes in the Wild, ICCV 2015
-[2] T-Y Lin et al., Focal Loss for Dense Object Detection, ICCV 2017
-[3] [Face attribute prediction]( https://github.com/d-li14/face-attribute-prediction)
-[4] [Pytorch transfer learning tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
-[5] [Multilabel image classification](https://www.learnopencv.com/multi-label-image-classification-with-pytorch-image-tagging/)
+-  Z. Liu et al. Deep Learning Face Attributes in the Wild, ICCV 2015
+- T-Y Lin et al., Focal Loss for Dense Object Detection, ICCV 2017
+- [Face attribute prediction]( https://github.com/d-li14/face-attribute-prediction)
+- [Pytorch transfer learning tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
+- [Multilabel image classification](https://www.learnopencv.com/multi-label-image-classification-with-pytorch-image-tagging/)
 
